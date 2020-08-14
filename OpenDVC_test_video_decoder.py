@@ -2,7 +2,8 @@ import argparse
 import numpy as np
 import tensorflow as tf
 import tensorflow_compression as tfc
-from scipy import misc
+#from scipy import misc
+import imageio
 import CNN_img
 import motion
 import MC_network
@@ -103,8 +104,8 @@ for gop_number in range(np.int(np.ceil(args.frame/args.GOP))):
         os.system(args.python_path + ' ' + args.CA_model_path + '/decode.py --compressed_file_path ' + path_bin + str(f + 1).zfill(3) + '.bin'
                   + ' --recon_path ' + path_com + 'f' + str(f + 1).zfill(3) + '.png')
 
-    F0_com = misc.imread(path_com + 'f' + str(f + 1).zfill(3) + '.png')
-    # F0_raw = misc.imread(path + 'f' + str(f + 1).zfill(3) + '.png')
+    F0_com = imageio.imread(path_com + 'f' + str(f + 1).zfill(3) + '.png')
+    # F0_raw = imageio.imread(path + 'f' + str(f + 1).zfill(3) + '.png')
 
     F0_com = np.expand_dims(F0_com, axis=0)
     # F0_raw = np.expand_dims(F0_raw, axis=0)
@@ -123,7 +124,7 @@ for gop_number in range(np.int(np.ceil(args.frame/args.GOP))):
 
         f = f + 1
 
-        # F1_raw = misc.imread(path + 'f' + str(f + 1).zfill(3) + '.png')
+        # F1_raw = imageio.imread(path + 'f' + str(f + 1).zfill(3) + '.png')
         # F1_raw = np.expand_dims(F1_raw, axis=0)
 
         with open(path_bin + str(f + 1).zfill(3) + '.bin', "rb") as ff:
@@ -138,7 +139,7 @@ for gop_number in range(np.int(np.ceil(args.frame/args.GOP))):
 
         F0_com = F0_com * 255.0
 
-        misc.imsave(path_com + 'f' + str(f + 1).zfill(3) + '.png', np.uint8(np.round(F0_com[0])))
+        imageio.imsave(path_com + 'f' + str(f + 1).zfill(3) + '.png', np.uint8(np.round(F0_com[0])))
 
         # quality_frame[f] = quality_com
 

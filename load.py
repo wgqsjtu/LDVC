@@ -1,5 +1,6 @@
 import numpy as np
-from scipy import misc
+#from scipy import misc
+import imageio
 
 def load_data(data, frames, batch_size, Height, Width, Channel, folder, I_QP):
 
@@ -12,10 +13,10 @@ def load_data(data, frames, batch_size, Height, Width, Channel, folder, I_QP):
         for f in range(frames):
 
             if f == 0:
-                img = misc.imread(path + 'im1_bpg444_QP' + str(I_QP) + '.png')
+                img = imageio.imread(path + 'im1_bpg444_QP' + str(I_QP) + '.png')
                 data[f, b, 0:Height, 0:Width, 0:Channel] = img[0:Height, bb: bb + Width, 0:Channel]
             else:
-                img = misc.imread(path + 'im' + str(f + 1) + '.png')
+                img = imageio.imread(path + 'im' + str(f + 1) + '.png')
                 data[f, b, 0:Height, 0:Width, 0:Channel] = img[0:Height, bb: bb + Width, 0:Channel]
 
     return data
@@ -32,10 +33,10 @@ def load_data_ssim(data, frames, batch_size, Height, Width, Channel, folder, I_l
         for f in range(frames):
 
             if f == 0:
-                img = misc.imread(path + 'im1_level' + str(I_level) + '_ssim.png')
+                img = imageio.imread(path + 'im1_level' + str(I_level) + '_ssim.png')
                 data[f, b, 0:Height, 0:Width, 0:Channel] = img[0:Height, bb: bb + Width, 0:Channel]
             else:
-                img = misc.imread(path + 'im' + str(f + 1) + '.png')
+                img = imageio.imread(path + 'im' + str(f + 1) + '.png')
                 data[f, b, 0:Height, 0:Width, 0:Channel] = img[0:Height, bb: bb + Width, 0:Channel]
 
     return data

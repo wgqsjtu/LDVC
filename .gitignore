@@ -1,5 +1,6 @@
 *.png
 *.bin
+*.enc-trainer
 .vscode
 __pycache__
 OpenDVC_model

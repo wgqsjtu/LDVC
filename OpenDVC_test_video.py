@@ -2,7 +2,7 @@ import argparse
 import numpy as np
 import tensorflow as tf
 import tensorflow_compression as tfc
-from scipy import misc
+#from scipy import misc
 import imageio
 import CNN_img
 import motion
