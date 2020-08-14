@@ -1,0 +1,7 @@
+*.png
+*.bin
+.vscode
+__pycache__
+OpenDVC_model
+tensorflow_compression
+motion_flow
