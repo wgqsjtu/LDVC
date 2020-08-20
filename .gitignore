@@ -4,5 +4,6 @@
 .vscode
 __pycache__
 OpenDVC_model
+OpenDVC_PSNR_1024
 tensorflow_compression
 motion_flow
